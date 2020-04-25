@@ -92,7 +92,13 @@ std::string converter::convert(long num)
 
 void converter::on_pushButton_clicked()
 {
-     QString value = ui->lineEdit->text();
+      QString value = ui->lineEdit->text();
+
+     std::string s =value.toStdString();
+
+    s.erase(std::remove(s.begin(), s.end(), ','),s.end());   //removing commas
+
+    value = QString::fromStdString(s);
 
     long num = value.toLong();
 
